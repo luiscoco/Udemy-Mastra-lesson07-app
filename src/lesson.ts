@@ -102,5 +102,36 @@ export const LESSON = {
       "title": "Mastra registry",
       "url": "https://mastra.ai/reference/core/mastra-class"
     }
+  ],
+  "readmeWorkflow": [
+    {
+      "step": "Validate reference",
+      "component": "src/lab.ts",
+      "behavior": "Choose lookupBy=key or lookupBy=id with a bounded reference string."
+    },
+    {
+      "step": "Inspect registry",
+      "component": "src/mastra/index.ts",
+      "behavior": "Register the agent under firstAgent."
+    },
+    {
+      "step": "Resolve identity",
+      "component": "src/lab.ts",
+      "behavior": "Call getAgent() for a matching registry key or getAgentById() for a matching stable id."
+    },
+    {
+      "step": "Return public identity",
+      "component": "src/lab.ts",
+      "behavior": "Show registry key, stable id, display name and lookup outcome."
+    }
+  ],
+  "liveWorkflow": [
+    "Resolve the chosen agent before making any model request.",
+    "Only a successful resolution proceeds to the actual agent.generate() call."
+  ],
+  "outcomeNotes": [
+    "firstAgent is the registry key; lesson-seven-first-agent is the stable id.",
+    "Using the stable id with lookupBy=key produces Needs attention.",
+    "Exporting an Agent is separate from registering it in the Mastra instance."
   ]
 } satisfies LessonMetadata;
